@@ -116,16 +116,21 @@ def run_rubocop
 end
 
 def run
+  puts "run"
   id = create_check()
+  puts "id is #{id}"
   begin
     results = run_rubocop()
     conclusion = results["conclusion"]
     output = results["output"]
 
+    puts "updating check"
     update_check(id, conclusion, output)
 
+    puts "failing" if conclusion == "failure"
     fail if conclusion == "failure"
   rescue
+    puts "rescuing"
     update_check(id, "failure", nil)
     fail
   end
