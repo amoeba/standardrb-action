@@ -1,3 +1,5 @@
+# Based almost completely on https://github.com/gimenete/rubocop-action
+
 require 'net/http'
 require 'json'
 require 'time'
@@ -12,13 +14,13 @@ require 'time'
 @owner = @repository["owner"]["login"]
 @repo = @repository["name"]
 
-@check_name = "Rubocop"
+@check_name = "StandardRB"
 
 @headers = {
   "Content-Type": 'application/json',
   "Accept": 'application/vnd.github.antiope-preview+json',
   "Authorization": "Bearer #{@GITHUB_TOKEN}",
-  "User-Agent": 'rubocop-action'
+  "User-Agent": 'standardrb-action'
 }
 
 def create_check
@@ -72,7 +74,7 @@ end
   "fatal" => 'failure'
 }
 
-def run_rubocop
+def run_standardrb
   annotations = []
   errors = nil
   Dir.chdir(@GITHUB_WORKSPACE) {
@@ -120,19 +122,15 @@ def run
   id = create_check()
   puts "id is #{id}"
   begin
-    results = run_rubocop()
+    results = run_standardrb()
     conclusion = results["conclusion"]
     output = results["output"]
 
-    puts "updating check"
     update_check(id, conclusion, output)
 
-    puts "failing" if conclusion == "failure"
     fail if conclusion == "failure"
   rescue
-    puts "rescuing"
     update_check(id, "failure", nil)
-    # fail
   end
 end
 
