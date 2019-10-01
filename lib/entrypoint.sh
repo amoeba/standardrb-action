@@ -2,6 +2,6 @@
 
 set -e
 
-gem install rubocop
+gem install standardrb
 
 ruby /action/lib/index.rb

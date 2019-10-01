@@ -76,7 +76,7 @@ def run_rubocop
   annotations = []
   errors = nil
   Dir.chdir(@GITHUB_WORKSPACE) {
-    errors = JSON.parse(`rubocop --format json`)
+    errors = JSON.parse(`standardrb --format json`)
   }
   conclusion = "success"
   count = 0
