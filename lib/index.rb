@@ -132,7 +132,7 @@ def run
   rescue
     puts "rescuing"
     update_check(id, "failure", nil)
-    fail
+    # fail
   end
 end
 
