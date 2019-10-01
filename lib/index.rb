@@ -118,9 +118,8 @@ def run_standardrb
 end
 
 def run
-  puts "run"
   id = create_check()
-  puts "id is #{id}"
+
   begin
     results = run_standardrb()
     conclusion = results["conclusion"]
