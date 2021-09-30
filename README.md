@@ -40,6 +40,17 @@ jobs:
         uses: amoeba/standardrb-action@v2
 ```
 
+You can specify a project path if your application is not at the root of the
+repository:
+
+```
+- name: standardrb
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    PROJECT_PATH: my_rails_app/
+  uses: amoeba/standardrb-action@v2
+```
+
 ## Contributing
 
 Please file an [Issue](https://github.com/amoeba/standardrb-action) for bug reports, feature requests, or other comments.
