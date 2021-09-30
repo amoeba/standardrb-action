@@ -8,6 +8,7 @@ require 'time'
 @GITHUB_EVENT_PATH = ENV["GITHUB_EVENT_PATH"]
 @GITHUB_TOKEN = ENV["GITHUB_TOKEN"]
 @GITHUB_WORKSPACE = ENV["GITHUB_WORKSPACE"]
+@PROJECT_PATH = ENV["PROJECT_PATH"].nil? ? @GITHUB_WORKSPACE : "#{@GITHUB_WORKSPACE}/#{ENV["PROJECT_PATH"]}"
 
 @event = JSON.parse(File.read(ENV["GITHUB_EVENT_PATH"]))
 @repository = @event["repository"]
@@ -77,7 +78,7 @@ end
 def run_standardrb
   annotations = []
   errors = nil
-  Dir.chdir(@GITHUB_WORKSPACE) {
+  Dir.chdir(@PROJECT_PATH) {
     errors = JSON.parse(`standardrb --format json`)
   }
   conclusion = "success"
