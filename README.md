@@ -43,7 +43,7 @@ jobs:
 You can specify a project path if your application is not at the root of the
 repository:
 
-```
+```yml
 - name: standardrb
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
