@@ -14,6 +14,10 @@ name: CI
 
 on: [push]
 
+permissions:
+  checks: write
+  contents: read
+
 jobs:
   Build:
     runs-on: ubuntu-latest
