@@ -14,10 +14,6 @@ name: CI
 
 on: [push]
 
-permissions:
-  checks: write
-  contents: read
-
 jobs:
   Build:
     runs-on: ubuntu-latest
@@ -54,6 +50,20 @@ repository:
     PROJECT_PATH: my_rails_app/
   uses: amoeba/standardrb-action@v2
 ```
+
+## Common Issues
+
+### `create_check` Forbidden
+
+If a Dependabot-generated branch triggers this action, you might get an error that can be solve by setting the permissions in the yaml:
+
+```yaml
+permissions:
+  checks: write
+  contents: read
+```
+
+You can get more context in [this GitHub blog post](https://github.blog/changelog/2021-10-06-github-actions-workflows-triggered-by-dependabot-prs-will-respect-permissions-key-in-workflows/).
 
 ## Contributing
 
