@@ -2,6 +2,6 @@
 
 set -e
 
-gem install standardrb
+gem install standard
 
 ruby /action/lib/index.rb
