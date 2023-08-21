@@ -84,6 +84,8 @@ def run_standardrb
   conclusion = "success"
   count = 0
 
+  raise "No files found to pass to standard" if errors["files"].none?
+
   errors["files"].each do |file|
     path = file["path"]
     offenses = file["offenses"]
