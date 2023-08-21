@@ -2,6 +2,6 @@
 
 set -e
 
-gem install standardrb
+gem install standardrb $ADDITIONAL_INSTALLED_GEMS
 
 ruby /action/lib/index.rb
