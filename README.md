@@ -51,6 +51,18 @@ repository:
   uses: amoeba/standardrb-action@v2
 ```
 
+You can also specify a space-separated list of additional gems to install in
+addition to standard. This is particularly helpful if you use a standard plugin
+like [standard-rails](https://github.com/standardrb/standard-rails).
+
+```yml
+- name: standardrb
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    ADDITIONAL_INSTALLED_GEMS: "standard-rails standard-performance"
+  uses: amoeba/standardrb-action@v2
+```
+
 ## Common Issues
 
 ### `create_check` Forbidden
