@@ -1,4 +1,4 @@
-FROM ruby:2.7
+FROM ruby:3.2
 
 LABEL com.github.actions.name="StandardRB"
 LABEL com.github.actions.description="Lint your Ruby code in parallel to your builds with StandardRB"
